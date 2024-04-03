@@ -38,9 +38,9 @@ export async function addOrUpdateUser(
     to: string;
   }
 ): Promise<IUser> {
-  const filter = { userId: userId };
+  // const filter = { userId: userId };
   const update = {
-    $set: { userId: userId },
+    // $set: { userId: userId },
     $push: { translations: translation },
   };
 
@@ -53,7 +53,7 @@ export async function addOrUpdateUser(
 
   try {
     const user: IUser | null = await User.findOneAndUpdate(
-      filter,
+      // filter,
       update,
       options
     );
@@ -77,7 +77,7 @@ export async function removeTranslation(
 
   try {
     const user: IUser | null = await User.findOneAndUpdate(
-      { userId: userId }, // Find the user with the given userId
+      // { userId: userId }, // Find the user with the given userId
       { $pull: { translations: { _id: translationId } } }, // Remove the translation with the given _id
       { new: true } // Return the updated document
     );
@@ -99,19 +99,18 @@ export async function getTranslations(
   await connectDB();
 
   try {
-    const user: IUser | null = await User.findOne({ userId: userId });
-    if (user) {
-      // sort translations by timestamp in descending order
-      user.translations.sort(
-        (a: ITranslation, b: ITranslation) =>
-          b.timestamp.getTime() - a.timestamp.getTime()
-      );
-
-      return user.translations; // Return the translations
-    } else {
-      console.log(`User with userId ${userId} not found.`);
-      return [];
-    }
+    // const user: IUser | null = await User.findOne({ userId: userId });
+    // if (user) {
+    //   // sort translations by timestamp in descending order
+    //   user.translations.sort(
+    //     (a: ITranslation, b: ITranslation) =>
+    //       b.timestamp.getTime() - a.timestamp.getTime()
+    //   );
+    //   return user.translations; // Return the translations
+    // } else {
+    //   console.log(`User with userId ${userId} not found.`);
+    //   return [];
+    // }
   } catch (err) {
     console.error("Error retrieving translations:", err);
     throw err; // Rethrow the error if you want to handle it outside this function

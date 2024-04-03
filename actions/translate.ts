@@ -5,7 +5,7 @@ import connectDB from "@/mongodb/db";
 import { addOrUpdateUser } from "@/mongodb/models/User";
 import axios from "axios";
 import { v4 } from "uuid";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 import { revalidateTag } from "next/cache";
 
 const key = process.env.AZURE_TEXT_TRANSLATION_KEY;
@@ -13,11 +13,11 @@ const endpoint = process.env.AZURE_TEXT_TRANSLATION;
 const location = process.env.AZURE_TEXT_LOCATION;
 
 async function translate(prevState: State, formData: FormData) {
-  auth().protect();
+  // auth().protect();
 
-  const { userId } = auth();
+  // const { userId } = auth();
 
-  if (!userId) throw new Error("User not found");
+  // if (!userId) throw new Error("User not found");
 
   const rawFormData = {
     input: formData.get("input") as string,
@@ -71,7 +71,7 @@ async function translate(prevState: State, formData: FormData) {
       toText: data[0].translations[0].text,
     };
 
-    addOrUpdateUser(userId, translation);
+    // addOrUpdateUser(userId, translation);
   } catch (err) {
     console.error(err);
   }

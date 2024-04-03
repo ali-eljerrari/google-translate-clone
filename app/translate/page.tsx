@@ -1,6 +1,6 @@
 import TranslationForm from "@/components/TranslationForm";
 import TranslationHistory from "@/components/TranslationHistory";
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 
 export type TranslationLanguages = {
@@ -14,10 +14,10 @@ export type TranslationLanguages = {
 };
 
 async function TranslatePage() {
-  auth().protect();
+  // auth().protect();
 
-  const { userId } = auth();
-  if (!userId) throw new Error("User not logged in");
+  // const { userId } = auth();
+  // if (!userId) throw new Error("User not logged in");
 
   const response = await fetch(
     "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0",
