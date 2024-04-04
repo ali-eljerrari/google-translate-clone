@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
-import connectDB from "../db";
+// import connectDB from "../db";
 
 export interface ITranslation extends Document {
   timestamp: Date;
@@ -44,7 +44,7 @@ export async function addOrUpdateUser(
     $push: { translations: translation },
   };
 
-  await connectDB();
+  // await connectDB();
 
   // Upsert option ensures that the document is created if it doesn't exist
   // The new: true option in the options object ensures that the method returns the updated document after the operation is complete. If you don't set new: true, the method will return the original document before the update.
@@ -73,7 +73,7 @@ export async function removeTranslation(
   userId: string,
   translationId: string
 ): Promise<IUser> {
-  await connectDB();
+  // await connectDB();
 
   try {
     const user: IUser | null = await User.findOneAndUpdate(
@@ -93,10 +93,8 @@ export async function removeTranslation(
   }
 }
 
-export async function getTranslations(
-  userId: string
-): Promise<Array<ITranslation>> {
-  await connectDB();
+export async function getTranslations(userId: string) {
+  // await connectDB();
 
   try {
     // const user: IUser | null = await User.findOne({ userId: userId });

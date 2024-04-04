@@ -8,5 +8,5 @@ export async function GET(request: NextRequest) {
 
   // const translations = await getTranslations(userId!);
 
-  // return Response.json({ translations });
+  return Response.json({ translations: "translations" });
 }

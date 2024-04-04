@@ -1,7 +1,7 @@
 "use server";
 
 import { State } from "@/components/TranslationForm";
-import connectDB from "@/mongodb/db";
+// import connectDB from "@/mongodb/db";
 import { addOrUpdateUser } from "@/mongodb/models/User";
 import axios from "axios";
 import { v4 } from "uuid";
@@ -57,7 +57,7 @@ async function translate(prevState: State, formData: FormData) {
   }
 
   //   MongoDB
-  await connectDB();
+  // await connectDB();
 
   if (rawFormData.inputLanguage === "auto") {
     rawFormData.inputLanguage = data[0].detectedLanguage.language;
