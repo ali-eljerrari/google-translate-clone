@@ -19,54 +19,47 @@ function Recorder({ uploadAudio }: { uploadAudio: (blob: Blob) => void }) {
   }, []);
 
   const getMicrophonePermission = async () => {
-    if ("MediaRecorder" in window) {
-      try {
-        const streamData = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: false,
-        });
-        setPermission(true);
-        setStream(streamData);
-      } catch (err: any) {
-        alert(err.message);
-      }
-    } else {
-      alert("Your browser does not support the MediaRecorder API");
-    }
+    // if ("MediaRecorder" in window) {
+    //   try {
+    //     const streamData = await navigator.mediaDevices.getUserMedia({
+    //       audio: true,
+    //       video: false,
+    //     });
+    //     setPermission(true);
+    //     setStream(streamData);
+    //   } catch (err: any) {
+    //     alert(err.message);
+    //   }
+    // } else {
+    //   alert("Your browser does not support the MediaRecorder API");
+    // }
   };
 
   const startRecording = async () => {
-    if (stream === null || pending) return;
-
-    setRecordingStatus("recording");
-
-    // Create a new media recorder instance using the stream
-    const media = new MediaRecorder(stream, { mimeType });
-    mediaRecorder.current = media;
-    mediaRecorder.current.start();
-
-    let localAudioChunks: Blob[] = [];
-
-    mediaRecorder.current.ondataavailable = (event) => {
-      if (typeof event.data === "undefined") return;
-      if (event.data.size === 0) return;
-
-      localAudioChunks.push(event.data);
-    };
-
-    setAudioChunks(localAudioChunks);
+    // if (stream === null || pending) return;
+    // setRecordingStatus("recording");
+    // // Create a new media recorder instance using the stream
+    // const media = new MediaRecorder(stream, { mimeType });
+    // mediaRecorder.current = media;
+    // mediaRecorder.current.start();
+    // let localAudioChunks: Blob[] = [];
+    // mediaRecorder.current.ondataavailable = (event) => {
+    //   if (typeof event.data === "undefined") return;
+    //   if (event.data.size === 0) return;
+    //   localAudioChunks.push(event.data);
+    // };
+    // setAudioChunks(localAudioChunks);
   };
 
   const stopRecording = async () => {
-    if (mediaRecorder.current === null || pending) return;
-
-    setRecordingStatus("inactive");
-    mediaRecorder.current.stop();
-    mediaRecorder.current.onstop = () => {
-      const audioBlob = new Blob(audioChunks, { type: mimeType });
-      uploadAudio(audioBlob);
-      setAudioChunks([]);
-    };
+    // if (mediaRecorder.current === null || pending) return;
+    // setRecordingStatus("inactive");
+    // mediaRecorder.current.stop();
+    // mediaRecorder.current.onstop = () => {
+    //   const audioBlob = new Blob(audioChunks, { type: mimeType });
+    //   uploadAudio(audioBlob);
+    //   setAudioChunks([]);
+    // };
   };
 
   return (

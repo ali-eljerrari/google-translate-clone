@@ -59,26 +59,23 @@ function TranslationForm({ languages }: { languages: TranslationLanguages }) {
     const formData = new FormData();
     formData.append("audio", file);
 
-    const response = await fetch("/transcribeAudio", {
-      method: "POST",
-      body: formData,
-    });
+    // const response = await fetch("/transcribeAudio", {
+    //   method: "POST",
+    //   body: formData,
+    // });
 
-    const data = await response.json();
+    // const data = await response.json();
 
-    if (data.text) {
-      setInput(data.text);
-    }
+    // if (data.text) {
+    //   setInput(data.text);
+    // }
   };
 
   const playAudio = async () => {
-    const synth = window.speechSynthesis;
-
-    if (!output || !synth) return;
-
-    const wordsToSay = new SpeechSynthesisUtterance(output);
-
-    synth.speak(wordsToSay);
+    // const synth = window.speechSynthesis;
+    // if (!output || !synth) return;
+    // const wordsToSay = new SpeechSynthesisUtterance(output);
+    // synth.speak(wordsToSay);
   };
 
   return (
