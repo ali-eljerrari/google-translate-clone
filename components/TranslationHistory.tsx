@@ -21,7 +21,7 @@ async function TranslationHistory() {
   // });
 
   // const { translations }: { translations: Array<ITranslation> } =
-    // await response.json();
+  // await response.json();
 
   return (
     <div className="">
@@ -35,32 +35,32 @@ async function TranslationHistory() {
       {/* Show a list of translations */}
       <ul className="divide-y border rounded-md">
         {/* {translations.map((translation) => ( */}
-          <li
-            // key={translation._id}
-            className="flex justify-between items-center p-5 hover:bg-gray-50 relative"
-          >
-            <div>
-              <p className="text-sm mb-5 text-gray-500">
-                {/* {getLanguage(translation.from)} */}
-                {" -> "}
-                {/* {getLanguage(translation.to)} */}
-              </p>
-
-              <div className="space-y-2 pr-5">
-                {/* <p>{translation.fromText}</p> */}
-                {/* <p className="text-gray-400">{translation.toText}</p> */}
-              </div>
-            </div>
-
-            <p className="text-sm text-gray-300 absolute top-2 right-2">
-              {/* <TimeAgoText
-                // date={new Date(translation.timestamp).toISOString()}
-              /> */}
+        <li
+          // key={translation._id}
+          className="flex justify-between items-center p-5 hover:bg-gray-50 relative"
+        >
+          <div>
+            <p className="text-sm mb-5 text-gray-500">
+              {/* {getLanguage(translation.from)} */}
+              {" -> "}
+              {/* {getLanguage(translation.to)} */}
             </p>
 
-            {/* <DeleteTranslationButton id={translation._id} /> */}
-          </li>
-        // ))}
+            <div className="space-y-2 pr-5">
+              {/* <p>{translation.fromText}</p> */}
+              {/* <p className="text-gray-400">{translation.toText}</p> */}
+            </div>
+          </div>
+
+          <p className="text-sm text-gray-300 absolute top-2 right-2">
+            {/* <TimeAgoText
+                // date={new Date(translation.timestamp).toISOString()}
+              /> */}
+          </p>
+
+          {/* <DeleteTranslationButton id={translation._id} /> */}
+        </li>
+        {/* ))} */}
       </ul>
     </div>
   );
