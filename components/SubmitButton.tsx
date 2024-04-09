@@ -1,18 +1,13 @@
-"use client";
+'use client';
 
-import { useFormStatus } from "react-dom";
-import { Button } from "./ui/button";
+import { Button } from './ui/button';
 
-function SubmitButton({ disabled }: { disabled: boolean }) {
-  const { pending } = useFormStatus();
-
+function SubmitButton() {
   return (
     <Button
-      type="submit"
-      disabled={disabled || pending}
-      className="bg-blue-500 hover:bg-blue-600 w-full lg:w-fit"
-    >
-      {pending ? "Translating..." : "Translate"}
+      type='submit'
+      className='bg-blue-500 hover:bg-blue-600 w-full lg:w-fit'>
+      Translate
     </Button>
   );
 }
