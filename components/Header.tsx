@@ -11,6 +11,7 @@ function Header() {
             alt='logo'
             width={200}
             height={100}
+            priority
             className='object-contain h-32 cursor-pointer'
           />
         </Link>

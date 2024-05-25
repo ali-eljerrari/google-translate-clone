@@ -13,6 +13,8 @@ import {
 } from '@/components/ui/select';
 import axios from 'axios';
 import { Button } from './ui/button';
+import TranslationHistory from './TranslationHistory';
+import { v4 as uuidv4 } from 'uuid';
 
 const subscriptionKey = process.env.NEXT_PUBLIC_AZURE_API_KEY;
 const endpoint = process.env.NEXT_PUBLIC_AZURE_ENDPOINT;
@@ -23,6 +25,7 @@ function TranslationForm({ languages }: { languages: any }) {
   const [to, setTo] = useState('ar');
   const [translatedText, setTranslatedText] = useState('');
   const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState<any>([]);
 
   const fetchData = async () => {
     if (!text || !to) return;
@@ -51,6 +54,21 @@ function TranslationForm({ languages }: { languages: any }) {
       });
 
       setTranslatedText(response.data[0].translations[0].text);
+
+      const historyData = [
+        ...history,
+        {
+          _id: uuidv4(),
+          from: response.data[0].detectedLanguage.language,
+          to: to,
+          text: text,
+          translatedText: response.data[0].translations[0].text,
+        },
+      ];
+
+      setHistory(historyData.reverse());
+      setText('');
+
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -187,6 +205,7 @@ function TranslationForm({ languages }: { languages: any }) {
           />
         </div>
       </form>
+      <TranslationHistory history={history} />
     </>
   );
 }
